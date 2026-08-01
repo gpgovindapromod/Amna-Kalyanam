@@ -377,6 +377,7 @@ img { display: block; }
 
 /* ── Countdown ───────────────────────────── */
 .countdown {
+  position: absolute;
   top: calc(max(env(safe-area-inset-top, 0px), 54px) + 430px);
   left: 0; right: 0;
   display: flex;
@@ -451,7 +452,8 @@ img { display: block; }
 
 /* ── Event Date / Venue ──────────────────── */
 .event-meta {
-  top: calc(max(env(safe-area-inset-top, 0px), 54px) + 550px);
+  position: absolute;
+  top: calc(max(env(safe-area-inset-top, 0px), 54px) + 535px);
   left: 0; right: 0;
   text-align: center;
   padding: 0 24px;
@@ -830,7 +832,7 @@ img { display: block; }
   background: var(--ivory);
   border-radius: 28px 28px 0 0;
   margin-top: -32px;
-  padding: 0 16px calc(env(safe-area-inset-bottom, 24px) + 48px);
+  padding: 32px 16px calc(env(safe-area-inset-bottom, 24px) + 48px);
   min-height: calc(100dvh - 278px);
   position: relative;
   /* Subtle Indian texture via repeating gradient */
@@ -851,18 +853,7 @@ img { display: block; }
     );
   background-color: var(--ivory);
 }
-.details-sheet::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg,
-    var(--crimson) 0%,
-    var(--saffron) 33%,
-    var(--gold) 66%,
-    var(--crimson) 100%);
-  border-radius: 28px 28px 0 0;
-}
+
 
 /* ── Save the Date card ──────────────────────── */
 .save-date-card {
