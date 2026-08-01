@@ -2,12 +2,12 @@
 
 /* ══════════════════════════════════════════
    WEDDING WEBSITE — JAVASCRIPT
-   Mohammed Abdul Razak & Henna Shireen
-   Nikah: Wednesday, 20 May 2026, 5:30 PM IST
+   Thanseer Khan & Amna Baiju
+   Nikah: Thursday, 03 September 2026, 11:30 AM IST
 ══════════════════════════════════════════ */
 
 // ── Wedding date target ────────────────────
-const WEDDING_DATE = new Date('2026-05-20T17:30:00+05:30');
+const WEDDING_DATE = new Date('2026-09-03T11:30:00+05:30');
 
 // ── DOM refs ───────────────────────────────
 const splash        = document.getElementById('splash');
@@ -292,8 +292,8 @@ if (musicPillDet) musicPillDet.addEventListener('click', toggleMusic);
    DOWNLOAD CARD BUTTON
 ════════════════════════════════════════════ */
 async function downloadWeddingCard(btn) {
-  const CARD_URL = 'assets/wedding-card.png';
-  const FILENAME = 'Mohammed-Henna-WeddingCard.png';
+  const CARD_URL = 'assets/Amna.pdf';
+  const FILENAME = 'Amna-Thanseer-Invitation.pdf';
 
   const origText = btn.textContent;
   btn.textContent = 'Downloading…';
@@ -303,13 +303,13 @@ async function downloadWeddingCard(btn) {
     const res  = await fetch(CARD_URL);
     if (!res.ok) throw new Error('Card image not found');
     const blob = await res.blob();
-    const file = new File([blob], FILENAME, { type: blob.type || 'image/png' });
+    const file = new File([blob], FILENAME, { type: blob.type || 'application/pdf' });
 
     // Mobile: native share sheet (WhatsApp status, etc.)
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({
         files: [file],
-        title: 'Mohammed & Henna — Wedding Card',
+        title: 'Thanseer & Amna — Wedding Card',
         text:  'You\'re invited! ✨'
       });
     } else {
