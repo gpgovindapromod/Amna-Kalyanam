@@ -25,28 +25,36 @@ let musicStarted = false;  // has audio.play() ever succeeded?
 let musicMuted   = false;  // is it currently muted?
 
 /* ════════════════════════════════════════════
-   AUDIO UNLOCK — iOS Safari requires a play()
-   call during a user gesture before any later
-   play() will succeed. We trigger a silent
-   play/pause on the very first touch so that
-   by the time the swipe completes, the audio
-   context is already unlocked.
+   AUDIO — Autoplay on load, fallback on first touch
+   Browsers block autoplay without user gesture, so we
+   try immediately, then retry on first interaction.
 ════════════════════════════════════════════ */
-(function unlockAudioOnFirstTouch() {
-  if (!bgMusic) return;
-  function unlock() {
-    bgMusic.muted = true;
-    bgMusic.play().then(() => {
-      bgMusic.pause();
-      bgMusic.currentTime = 0;
-      bgMusic.muted = false;
-    }).catch(() => {});
-    document.removeEventListener('touchstart', unlock, true);
-    document.removeEventListener('mousedown',  unlock, true);
-  }
-  document.addEventListener('touchstart', unlock, { capture: true, once: true, passive: true });
-  document.addEventListener('mousedown',  unlock, { capture: true, once: true });
-})();
+function startMusic() {
+  if (!bgMusic || musicStarted) return;
+  bgMusic.volume = 0;
+  bgMusic.play().then(() => {
+    musicStarted = true;
+    musicMuted   = false;
+    updateMusicUI();
+    fadeVolume(0, 0.55, 2000);
+  }).catch(() => {});
+}
+
+// Attempt immediate autoplay
+document.addEventListener('DOMContentLoaded', () => startMusic());
+// Also try after a short delay (some browsers need this)
+setTimeout(() => startMusic(), 500);
+
+// Fallback: play on very first user interaction
+function playOnFirstInteraction() {
+  startMusic();
+  document.removeEventListener('touchstart', playOnFirstInteraction, true);
+  document.removeEventListener('mousedown',  playOnFirstInteraction, true);
+  document.removeEventListener('keydown',    playOnFirstInteraction, true);
+}
+document.addEventListener('touchstart', playOnFirstInteraction, { capture: true, passive: true });
+document.addEventListener('mousedown',  playOnFirstInteraction, { capture: true });
+document.addEventListener('keydown',    playOnFirstInteraction, { capture: true });
 
 /* ════════════════════════════════════════════
    COUNTDOWN TIMER
