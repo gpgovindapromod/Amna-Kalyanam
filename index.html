@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#D87093" />
   <meta name="description" content="You are cordially invited to the auspicious Nikah ceremony of Thanseer Khan & Amna Baiju on 3 September 2026." />
+  
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Thanseer &amp; Amna | Nikah Invitation — Sept 3, 2026" />
+  <meta property="og:description" content="You are cordially invited to the auspicious Nikah ceremony of Thanseer Khan &amp; Amna Baiju on 3rd September 2026 at Pratheeksha Rishani Convention Centre, Valakom." />
+  <meta property="og:image" content="assets/invite.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://gpgovindapromod.github.io/Amna-Kalyanam/" />
+  <meta property="og:site_name" content="Amna &amp; Thanseer Nikah" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Thanseer &amp; Amna | Nikah Invitation — Sept 3, 2026" />
+  <meta name="twitter:description" content="Cordially invited to the Nikah of Thanseer Khan &amp; Amna Baiju, 3rd September 2026, Valakom." />
+  <meta name="twitter:image" content="assets/invite.png" />
+  
   <title>Thanseer & Amna | Nikah Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,49 +109,50 @@
       <div class="gold-line"></div>
     </div>
 
-    <!-- Countdown timer -->
-    <div class="countdown splash-enter" id="countdown" style="--delay:0.9s">
-      <div class="count-unit">
-        <div class="count-box"><span id="cd-days">00</span></div>
-        <span class="count-label">Days</span>
+    <!-- Countdown + Date/Venue — bottom anchored -->
+    <div class="splash-bottom-stack splash-enter" style="--delay:0.9s">
+      <div class="countdown" id="countdown">
+        <div class="count-unit">
+          <div class="count-box"><span id="cd-days">00</span></div>
+          <span class="count-label">Days</span>
+        </div>
+        <span class="count-sep">✦</span>
+        <div class="count-unit">
+          <div class="count-box"><span id="cd-hours">00</span></div>
+          <span class="count-label">Hours</span>
+        </div>
+        <span class="count-sep">✦</span>
+        <div class="count-unit">
+          <div class="count-box"><span id="cd-mins">00</span></div>
+          <span class="count-label">Mins</span>
+        </div>
+        <span class="count-sep">✦</span>
+        <div class="count-unit">
+          <div class="count-box"><span id="cd-secs">00</span></div>
+          <span class="count-label">Secs</span>
+        </div>
       </div>
-      <span class="count-sep">✦</span>
-      <div class="count-unit">
-        <div class="count-box"><span id="cd-hours">00</span></div>
-        <span class="count-label">Hours</span>
-      </div>
-      <span class="count-sep">✦</span>
-      <div class="count-unit">
-        <div class="count-box"><span id="cd-mins">00</span></div>
-        <span class="count-label">Mins</span>
-      </div>
-      <span class="count-sep">✦</span>
-      <div class="count-unit">
-        <div class="count-box"><span id="cd-secs">00</span></div>
-        <span class="count-label">Secs</span>
-      </div>
-    </div>
 
-    <!-- Date + venue -->
-    <div class="event-meta splash-enter" style="--delay:1.05s">
-      <p class="event-date" style="margin-bottom: 5px;">
-        <i data-lucide="calendar-days" width="13" height="13" style="display:inline-block;vertical-align:middle;margin-right:5px"></i>
-        Thursday, Sept 03, 2026 &middot; "Insha Allah"
-      </p>
-      <p class="event-date" style="font-size: 11px; margin-bottom: 5px;">
-        (1448 Ra-Ul-Awal 21)
-      </p>
-      <p class="event-venue">
-        <i data-lucide="map-pin" width="13" height="13" style="display:inline-block;vertical-align:middle;margin-right:5px"></i>
-        Pratheeksha Rishani Convention Centre, Valakom
-      </p>
+      <div class="event-meta">
+        <p class="event-date" style="margin-bottom: 5px;">
+          <i data-lucide="calendar-days" width="13" height="13" style="display:inline-block;vertical-align:middle;margin-right:5px"></i>
+          Thursday, Sept 03, 2026 &middot; "Insha Allah"
+        </p>
+        <p class="event-date" style="font-size: 11px; margin-bottom: 5px;">
+          (1448 Ra-Ul-Awal 21)
+        </p>
+        <p class="event-venue">
+          <i data-lucide="map-pin" width="13" height="13" style="display:inline-block;vertical-align:middle;margin-right:5px"></i>
+          Pratheeksha Rishani Convention Centre, Valakom
+        </p>
+      </div>
     </div>
 
     <!-- Swipe CTA -->
     <div class="swipe-wrap splash-enter" style="--delay:1.25s">
       <div class="swipe-track" id="swipeTrack" role="button" aria-label="Swipe right to confirm attendance">
         <div class="swipe-thumb" id="swipeThumb">
-          <i data-lucide="chevron-right" width="26" height="26" style="color:#D87093"></i>
+          <i data-lucide="chevron-right" width="28" height="28" style="color:#fff; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.25));"></i>
         </div>
         <span class="swipe-label" id="swipeLabel">Swipe to Confirm Attendance</span>
         <div class="swipe-fill" id="swipeFill"></div>
@@ -244,7 +263,7 @@
       <!-- ── Couple Portrait ── -->
       <div class="card-section couple-portrait-section" style="margin-bottom: 24px;">
         <div class="portrait-frame" style="border-radius: var(--radius-lg); overflow: hidden; position: relative; box-shadow: var(--shadow-float); border: 2px solid rgba(183,110,121,0.3);">
-          <img src="assets/muslim-couple.png" alt="Amna & Thanseer" style="width: 100%; display: block; object-fit: cover; aspect-ratio: 4/5;" loading="lazy" decoding="async" />
+          <img src="assets/invite.png" alt="Amna & Thanseer" style="width: 100%; display: block; object-fit: cover; aspect-ratio: 4/5;" loading="lazy" decoding="async" />
         </div>
       </div>
 

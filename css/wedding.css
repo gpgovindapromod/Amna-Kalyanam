@@ -375,11 +375,21 @@ img { display: block; }
   text-shadow: 0 0 12px rgba(183,110,121,0.6);
 }
 
+/* ── Bottom stack (countdown + date/venue) ── */
+.splash-bottom-stack {
+  position: absolute;
+  bottom: calc(env(safe-area-inset-bottom, 20px) + 100px);
+  left: 0; right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  z-index: 3;
+}
+
 /* ── Countdown ───────────────────────────── */
 .countdown {
-  position: absolute;
-  top: calc(max(env(safe-area-inset-top, 0px), 54px) + 430px);
-  left: 0; right: 0;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -450,13 +460,10 @@ img { display: block; }
   opacity: 0.7;
 }
 
-/* ── Event Date / Venue ──────────────────── */
+/* ── Event Date / Venue ───────────────── */
 .event-meta {
-  position: absolute;
-  top: calc(max(env(safe-area-inset-top, 0px), 54px) + 535px);
-  left: 0; right: 0;
   text-align: center;
-  padding: 0 24px;
+  padding: 0 8px;
 }
 .event-date,
 .event-venue {
@@ -474,21 +481,23 @@ img { display: block; }
 
 /* ── Swipe CTA ───────────────────────────── */
 .swipe-wrap {
+  position: absolute;
   bottom: calc(env(safe-area-inset-bottom, 34px) + 22px);
   left: 50%;
   transform: translateX(-50%);
   width: min(304px, calc(100% - 40px));
+  z-index: 10;
 }
 .swipe-track {
   position: relative;
   width: 100%;
   height: 76px;
   border-radius: var(--radius-pill);
-  background: rgba(255,255,255,0.65);
+  background: rgba(255,255,255,0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 8px 32px rgba(183,110,121,0.2), inset 0 0 0 1px rgba(255,255,255,0.8);
-  border: 1px solid rgba(255,255,255,0.9);
+  box-shadow: 0 8px 32px rgba(183,110,121,0.35), inset 0 0 0 1.5px rgba(183,110,121,0.3);
+  border: none;
   overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
@@ -529,14 +538,15 @@ img { display: block; }
   padding-left: 82px;
   padding-right: 16px;
   font-family: var(--font-serif);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 14.5px;
+  font-weight: 600;
   font-style: italic;
-  color: var(--text-dark);
+  color: var(--crimson);
   pointer-events: none;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   white-space: nowrap;
   transition: opacity 0.12s;
+  text-shadow: none;
 }
 /* Done state */
 .swipe-track.done { background: rgba(255,255,255,0.85); }
