@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://gpgovindapromod.github.io/Amna-Kalyanam/sitemap.xml
+Sitemap: https://amna-thanzeer.vercel.app/sitemap.xml
