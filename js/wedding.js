@@ -309,28 +309,20 @@ async function downloadWeddingCard(btn) {
 
   try {
     const res  = await fetch(CARD_URL);
-    if (!res.ok) throw new Error('Card image not found');
+    if (!res.ok) throw new Error('File not found');
     const blob = await res.blob();
-    const file = new File([blob], FILENAME, { type: blob.type || 'application/pdf' });
 
-    // Mobile: native share sheet (WhatsApp status, etc.)
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        files: [file],
-        title: 'Thanseer & Amna — Wedding Card',
-        text:  'You\'re invited! ✨'
-      });
-    } else {
-      // Desktop / fallback: trigger download
-      const url = URL.createObjectURL(blob);
-      const a   = document.createElement('a');
-      a.href     = url;
-      a.download = FILENAME;
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 60000);
-    }
+    // Always trigger a direct download (works on both mobile & desktop)
+    const url = URL.createObjectURL(blob);
+    const a   = document.createElement('a');
+    a.href     = url;
+    a.download = FILENAME;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
   } catch {
-    // Silently fail — card image may not be uploaded yet
+    // Silently fail — PDF may not be uploaded yet
   } finally {
     btn.textContent = origText;
     btn.disabled    = false;
