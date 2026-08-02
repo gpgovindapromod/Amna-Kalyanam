@@ -1357,36 +1357,17 @@ img { display: block; }
 ════════════════════════════════════════════ */
 @media (min-width: 620px) {
   html, body {
-    background: #2d0f1a;
-    background-image:
-      radial-gradient(ellipse at 30% 40%, rgba(183,110,121,0.25) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 60%, rgba(216,112,147,0.15) 0%, transparent 60%),
-      radial-gradient(ellipse at 50% 50%, #3a1520 0%, #1a080f 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+    background: #4A2530;
+    background-image: radial-gradient(ellipse at 50% 50%, #3a1515 0%, #1a0808 60%);
   }
   .page {
-    position: relative !important;
-    inset: auto !important;
-    width: 390px !important;
-    height: min(844px, 96dvh) !important;
-    flex-shrink: 0;
+    left: 50% !important; right: auto !important;
+    width: 393px !important;
+    box-shadow: 0 0 100px rgba(216,112,147,0.5), 0 0 40px rgba(183,110,121,0.15);
     border-radius: 44px;
     overflow: hidden;
-    box-shadow:
-      0 0 0 1px rgba(183,110,121,0.3),
-      0 30px 80px rgba(0,0,0,0.6),
-      0 0 60px rgba(216,112,147,0.2);
-    transform: none !important;
+    transform: translateX(-50%) !important;
   }
-  /* Override the transform-based transition for details page on desktop */
-  #details {
-    transform: translateY(100%) !important;
-    border-radius: 44px;
-  }
-  #details.revealed {
-    transform: translateY(0) !important;
-  }
+  #details.revealed { transform: translateX(-50%) translateY(0) !important; }
+  #details:not(.revealed) { transform: translateX(-50%) translateY(100%) !important; }
 }
